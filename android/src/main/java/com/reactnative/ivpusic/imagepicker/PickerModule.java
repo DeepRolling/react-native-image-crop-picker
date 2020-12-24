@@ -339,9 +339,8 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     private void initiatePicker(final Activity activity) {
         try {
 //            final Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-            final Intent galleryIntent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            if (cropping || mediaType.equals("photo")) {
-
+            final Intent galleryIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            if (mediaType.equals("photo")) {
                 galleryIntent.setType("image/*");
                 if (cropping) {
                     String[] mimetypes = {"image/jpeg", "image/png"};
@@ -350,16 +349,14 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
             } else if (mediaType.equals("video")) {
                 galleryIntent.setType("video/*");
             } else {
-                galleryIntent.setType("image/* video/*");
-                if (cropping) {
-                    String[] mimetypes = {"image/jpeg", "image/png"};
-                    galleryIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
-                }
+                galleryIntent.setType("image/*");
+                String[] mimetypes = {"image/jpeg", "image/png", "video/*"};
+                galleryIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
             }
 
-//            galleryIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            galleryIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             galleryIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, multiple);
-//            galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
+            galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
 
             final Intent chooserIntent = Intent.createChooser(galleryIntent, "选择图片/视频");
             activity.startActivityForResult(chooserIntent, IMAGE_PICKER_REQUEST);
