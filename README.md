@@ -1,5 +1,19 @@
 # react-native-image-crop-picker
 
+## Attention
+
+Only for personal usage!!! Unmaintained!!!
+
+Please use official version of this library!!!
+Please use official version of this library!!!
+Please use official version of this library!!!
+
+```json
+ "react-native-image-crop-picker": "DeepRolling/react-native-image-crop-picker.git#react-native-image-crop-picker-v0.35.4-gitpkg",
+```
+
+
+
 [![Backers on Open Collective](https://opencollective.com/react-native-image-crop-picker/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/react-native-image-crop-picker/sponsors/badge.svg)](#sponsors)
 
 <img src="svg.svg" width="50%" height="50%" />
